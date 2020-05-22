@@ -1,6 +1,7 @@
 CREATE TABLE [Usuarios] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [CPF] varchar(20),
+  [Senha] varchar(20),
   [Nome] varchar(255),
   [Endereco] int,
   [Perfil] int
@@ -31,7 +32,7 @@ CREATE TABLE [TabelaGeralDependente] (
 )
 GO
 
-CREATE TABLE [Fretado] (
+CREATE TABLE [Fretados] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Numero] int,
   [Motorista] int,
@@ -41,7 +42,7 @@ CREATE TABLE [Fretado] (
 )
 GO
 
-CREATE TABLE [Rota] (
+CREATE TABLE [Rotas] (
   [Parada] int,
   [Fretado] int
 )
@@ -56,11 +57,16 @@ GO
 ALTER TABLE [TabelaGeralDependente] ADD FOREIGN KEY ([TabelaGeral]) REFERENCES [TabelaGeral] ([Id])
 GO
 
-ALTER TABLE [Fretado] ADD FOREIGN KEY ([Motorista]) REFERENCES [Usuarios] ([Id])
+ALTER TABLE [Fretados] ADD FOREIGN KEY ([Motorista]) REFERENCES [Usuarios] ([Id])
 GO
 
-ALTER TABLE [Rota] ADD FOREIGN KEY ([Parada]) REFERENCES [Enderecos] ([Id])
+ALTER TABLE [Rotas] ADD FOREIGN KEY ([Parada]) REFERENCES [Enderecos] ([Id])
 GO
 
-ALTER TABLE [Rota] ADD FOREIGN KEY ([Fretado]) REFERENCES [Fretado] ([Id])
+ALTER TABLE [Rotas] ADD FOREIGN KEY ([Fretado]) REFERENCES [Fretados] ([Id])
 GO
+
+insert into TabelaGeral (Descricao) values ('Perfil')
+
+insert into TabelaGeralDependente (TabelaGeral, Descricao, Sigla) values (1, 'Comum', 'CM')
+insert into TabelaGeralDependente (TabelaGeral, Descricao, Sigla) values (1, 'Admin', 'AD')
