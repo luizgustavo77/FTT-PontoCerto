@@ -6,6 +6,7 @@
 - SQL Server com protocolo padrão TCP/IP porta 1433 habilitado
 - SQLJDC4.jar necessaria na lib do projeto para abrir conexão com o banco
 - API para consultar CEP, VIACEP
+- SQL para criar o banco está no repositório
 - Conexão com a internet
 - Usuario primeiro acesso:
   - 22728957845
