@@ -1,3 +1,10 @@
+
+CREATE DATABASE PontoCerto
+GO
+
+USE PontoCerto
+GO
+
 CREATE TABLE [Usuarios] (
   [CPF] bigint primary key,
   [Senha] varchar(20),
