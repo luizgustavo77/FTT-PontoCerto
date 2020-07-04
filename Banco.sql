@@ -1,6 +1,5 @@
 CREATE TABLE [Usuarios] (
-  [Id] int PRIMARY KEY IDENTITY(1, 1),
-  [CPF] varchar(20),
+  [CPF] bigint primary key,
   [Senha] varchar(20),
   [Nome] varchar(255),
   [Endereco] int,
@@ -10,7 +9,7 @@ GO
 
 CREATE TABLE [Enderecos] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
-  [CEP] int,
+  [CEP] varchar(8),
   [Bairro] varchar(255),
   [Rua] varchar(255),
   [Cidade] varchar(255),
@@ -35,10 +34,10 @@ GO
 CREATE TABLE [Fretados] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Numero] int,
-  [Motorista] int,
+  [Motorista] bigint,
   [Descricao] varchar(255),
-  [Entrada] datetime,
-  [Saida] datetime
+  [Entrada] time,
+  [Saida] time
 )
 GO
 
@@ -57,7 +56,7 @@ GO
 ALTER TABLE [TabelaGeralDependente] ADD FOREIGN KEY ([TabelaGeral]) REFERENCES [TabelaGeral] ([Id])
 GO
 
-ALTER TABLE [Fretados] ADD FOREIGN KEY ([Motorista]) REFERENCES [Usuarios] ([Id])
+ALTER TABLE [Fretados] ADD FOREIGN KEY ([Motorista]) REFERENCES [Usuarios] ([CPF])
 GO
 
 ALTER TABLE [Rotas] ADD FOREIGN KEY ([Parada]) REFERENCES [Enderecos] ([Id])
@@ -70,3 +69,9 @@ insert into TabelaGeral (Descricao) values ('Perfil')
 
 insert into TabelaGeralDependente (TabelaGeral, Descricao, Sigla) values (1, 'Comum', 'CM')
 insert into TabelaGeralDependente (TabelaGeral, Descricao, Sigla) values (1, 'Admin', 'AD')
+
+insert into Enderecos (CEP, Bairro, Rua, Cidade, Estado) values('09896160', 'Planalto', 'Rua Cassiano Gabus Mendes', 'Sao Bernardo do Campo', 'SP')
+insert into Enderecos (CEP, Bairro, Rua, Cidade, Estado) values('09895110', 'Planalto', 'Rua Benedito Conrado Filho', 'Sao Bernardo do Campo', 'SP')
+
+insert into Usuarios (CPF, Senha, Nome, Endereco, Perfil) values (12345678945, 123456, 'Teste', 1, 1)
+insert into Usuarios (CPF, Senha, Nome, Endereco, Perfil) values (22728957845, 123456, 'Teste admin', 2, 2)
