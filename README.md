@@ -1,6 +1,6 @@
 # 💻 **PontoCerto**
 
-> Trabalho realizado em java com o proposito de auxiliar no serviço de fretado das empresas :bus:
+> Atividade realizada na Engenharia da computação no 6° semesntre para a matéria de Logica de Programação II com o proposito de auxiliar no serviço de fretado das empresas :bus:
 
 # :gear: **Informações Tecnicas**
 - SQL Server com protocolo padrão TCP/IP porta 1433 habilitado
